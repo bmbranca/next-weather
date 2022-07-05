@@ -1,17 +1,17 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { Header, WeatherBanner, Container, Form } from "./styled";
 
-let weather = function getData() {
-    fetch('http://api.openweathermap.org/geo/1.0/direct?q=lisle&appid=1252fa4b4c43bbeb8d83c3de478b9d1d')
-    .then(res => res.json())
-    .then(data => console.log(data[0].name))
-}
-
-weather()
-
-
-
 export default function Home() {
+  const [weather, setWeather] = React.useState('')
+
+  useEffect(() => {
+    fetch(
+      "http://api.openweathermap.org/geo/1.0/direct?q=lisle&appid=1252fa4b4c43bbeb8d83c3de478b9d1d"
+    )
+      .then((res) => res.json())
+      .then((data) => setWeather(<h1>{data[0].name}</h1>))
+  }, [])
+
   return (
     <Container>
       <Header>Next Weather App</Header>
@@ -19,9 +19,9 @@ export default function Home() {
         <label>
           <input type="text" name="name" />
         </label>
-        < button>Click</button>
+        <button>Click</button>
       </Form>
-      <WeatherBanner></WeatherBanner>
+      <WeatherBanner>{weather}</WeatherBanner>
     </Container>
   );
 }
