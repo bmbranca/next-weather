@@ -12,9 +12,13 @@ background-color: blue;
 font-size: 4rem;
 `
 
-export const Input = styled.input`
-max-width: 500px;
+export const Form = styled.form`
+display: flex;
+flex-direction: column;
+max-width: 800px;
 margin: 0 auto;
 `
 
-export const WeatherBanner = styled.div``
+export const WeatherBanner = styled.div`
+background-color: red;
+`
